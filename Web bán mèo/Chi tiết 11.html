@@ -1,0 +1,202 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/Chi.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<link rel="stylesheet" href="Mau.css" type="text/css">
+<meta charset="utf-8">
+<!-- InstanceBeginEditable name="doctitle" -->
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+
+</head>
+
+<body>
+	<a href="#Dautrang" title="Quay lại đầu trang"><img src="mui ten.png" style="width: 30px;margin-left: 1200px;margin-top: 500px;position:fixed"></a>
+	<div id="Dautrang"></div>
+	<div id="main">
+		<div id="head-left">
+		</div>
+		<div id="head-right"></div>
+		<div id="head-link">
+			<div id="menu">
+			<a href="1. Trang chủ.html" title="Trang chủ">Trang chủ</a>
+			<a href="2. Sản phẩm.html" title="Sản phẩm">Sản phẩm</a>
+			<a href="3. Đăng ký.html" title="Đăng ký">Đăng ký</a>
+			<a href="4. Đăng nhập.html" title="Đăng nhập">Đăng nhập</a>
+			<a href="5. Giỏ hàng.html" title="Giỏ hàng">Giỏ hàng</a>
+			<a href="6. Giới thiệu.html" title="Giới thiệu">Giới thiệu</a>
+			<form action="2. Sản phẩm.html">
+				<input type="search" placeholder ="Tìm kiếm"></input>
+				<input type="submit" value="Tìm kiếm" style="margin-left: 10px"></input>
+			</form>
+
+			</div>
+		</div>
+		<div id="left">
+			<br><h3 id="chu"><b>DANH SÁCH CÁC LOẠI MÈO TẠI SHOP</b></h3>
+			<ul type="square">
+				<div id="ds">
+				<li id="list"><a href="#Meobatu">Mèo Ba Tư</a></li>
+				<li id="list"><a href="#Meoaicap">Mèo Ai Cập</a></li>
+				<li id="list"><a href="#Meoanhlongdai">Mèo Anh lông dài</a></li>
+				<li id="list"><a href="#Meomuop">Mèo mướp</a></li>
+				<li id="list"><a href="#Meovang">Mèo vàng</a></li>
+				<li id="list"><a href="#Meoxiem">Mèo Xiêm</a></li>
+				<li id="list"><a href="#Meochanngan">Mèo chân ngắn Munchkin</a></li>
+				</div>
+			</ul>
+			<div id="calendar">
+			<script>
+				<!-- Begin
+				  monthnames = new Array("January", "Februrary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemeber");
+				  var linkcount = 0;
+				  function addlink(month, day, href) {
+					var entry = new Array(3);
+					entry[0] = month;
+					entry[1] = day;
+					entry[2] = href;
+					this[linkcount++] = entry;
+				  }
+				  Array.prototype.addlink = addlink;
+				  linkdays = new Array();
+				  monthdays = new Array(12);
+				  monthdays[0] = 31;
+				  monthdays[1] = 28;
+				  monthdays[2] = 31;
+				  monthdays[3] = 30;
+				  monthdays[4] = 31;
+				  monthdays[5] = 30;
+				  monthdays[6] = 31;
+				  monthdays[7] = 31;
+				  monthdays[8] = 30;
+				  monthdays[9] = 31;
+				  monthdays[10] = 30;
+				  monthdays[11] = 31;
+				  todayDate = new Date();
+				  thisday = todayDate.getDay();
+				  thismonth = todayDate.getMonth();
+				  thisdate = todayDate.getDate();
+				  thisyear = todayDate.getYear();
+				  thisyear = thisyear % 100;
+				  thisyear = ((thisyear < 50) ? (2000 + thisyear) : (1900 + thisyear));
+				  if (((thisyear % 4 == 0)
+				  && !(thisyear % 100 == 0))
+				  || (thisyear % 400 == 0)) monthdays[1]++;
+				  startspaces = thisdate;
+				  while (startspaces > 7) startspaces -= 7;
+				  startspaces = thisday - startspaces + 1;
+				  if (startspaces < 0) startspaces += 7;
+				  document.write("<table border=2 bgcolor=FF97D0 ");
+				  document.write("bordercolor=black><font color=white>");
+				  document.write("<tr><td colspan=7><center><strong>" + monthnames[thismonth] + " " + thisyear + "</strong></center></font></td></tr>");
+				  document.write("<tr>");
+				  document.write("<td align=center><font color=white>Su</td>");
+				  document.write("<td align=center><font color=white>M</td>");
+				  document.write("<td align=center><font color=white>Tu</td>");
+				  document.write("<td align=center><font color=white>W</td>");
+				  document.write("<td align=center><font color=white>Th</td>");
+				  document.write("<td align=center><font color=white>F</td>");
+				  document.write("<td align=center><font color=white>Sa</td>");
+				  document.write("</tr>");
+				  document.write("<tr>");
+				  for (s = 0; s < startspaces; s++) {
+					document.write("<td> </td>");
+				  }
+				  count = 1;
+				  while (count <= monthdays[thismonth]) {
+					for (b = startspaces; b < 7; b++) {
+					  linktrue = false;
+					  document.write("<td>");
+					  for (c = 0; c < linkdays.length; c++) {
+						if (linkdays[c] != null) {
+						  if ((linkdays[c][0] == thismonth + 1) && (linkdays[c][1] == count)) {
+							document.write("<a href=\"" + linkdays[c][2] + "\">");
+							linktrue = true;
+						  }
+						}
+					  }
+					  if (count == thisdate) {
+						document.write("<font color='00FFF5'><strong>");
+					  }
+					  if (count <= monthdays[thismonth]) {
+						document.write(count);
+					  }
+					  else {
+						document.write(" ");
+					  }
+					  if (count == thisdate) {
+						document.write("</strong></font>");
+					  }
+					  if (linktrue)
+						document.write("</a>");
+					  document.write("</td>");
+					  count++;
+					}
+					document.write("</tr>");
+					document.write("<tr>");
+					startspaces = 0;
+				  }
+				  document.write("</table></p>");
+				  // End -->
+  			</script>
+				<div id = "clock" style="color: #FF00F0;text-align: center;border: solid #B959C2;border-style: double" onload="currentTime()">
+			<script>function currentTime() {
+				  let date = new Date(); 
+				  let hh = date.getHours();
+				  let mm = date.getMinutes();
+				  let ss = date.getSeconds();
+				  let session = "AM";
+
+				  if(hh === 0){
+					  hh = 12;
+				  }
+				  if(hh > 12){
+					  hh = hh - 12;
+					  session = "PM";
+				   }
+
+				   hh = (hh < 10) ? "0" + hh : hh;
+				   mm = (mm < 10) ? "0" + mm : mm;
+				   ss = (ss < 10) ? "0" + ss : ss;
+
+				   let time = hh + ":" + mm + ":" + ss + " " + session;
+
+				  document.getElementById("clock").innerText = time; 
+				  let t = setTimeout(function(){ currentTime() }, 1000);
+				}
+
+				currentTime();
+				</script>
+					</div>
+			</div>
+		</div>
+		
+		<div id="content">
+			<table align="center" border="1" style="margin-top:140px">
+				<tr><td><!-- InstanceBeginEditable name="EditRegion2" --><a href="5. Giỏ hàng.html"><img src="meomuop2.png"></a><!-- InstanceEndEditable --></td><td style="padding-left: 5px;padding-right:5px;color:black"><b><!-- InstanceBeginEditable name="EditRegion4" --><b>Tên: Mèo Mướp</b><!-- InstanceEndEditable --><br><br>Đặc Quyền Đi Kèm</b>
+					<ul type="disc">
+					  <li>Trả góp LS 0% trong 12 tháng</li>
+						<li>Bảo hành toàn diện 365 ngày</li>
+						<li>Bảo hiểm sức khoẻ lên tới 1.000.000đ</li>
+						<li>Miễn phí vận chuyển toàn quốc</li>
+					</ul>
+				</td></tr>
+				<tr><td colspan="2" align="center" style="color: black"><!-- InstanceBeginEditable name="EditRegion5" -->14.300.000 đ<!-- InstanceEndEditable --></td></tr>
+			</table>
+		</div>
+		
+		<div id="right"></div>
+		<div id="footer">
+			<div id="menu2">
+			<a href="1. Trang chủ.html" title="Trang chủ">Trang chủ</a>
+			<a href="2. Sản phẩm.html" title="Sản phẩm">Sản phẩm</a>
+			<a href="3. Đăng ký.html" title="Đăng ký">Đăng ký</a>
+			<a href="4. Đăng nhập.html" title="Đăng nhập">Đăng nhập</a>
+			<a href="5. Giỏ hàng.html" title="Giỏ hàng">Giỏ hàng</a>
+			<a href="6. Giới thiệu.html" title="Giới thiệu">Giới thiệu</a>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- InstanceEnd --></html>

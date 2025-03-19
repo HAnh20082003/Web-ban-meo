@@ -1,0 +1,389 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/Mau.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+	<link rel="stylesheet" href="Mau.css" type="text/css">
+<meta charset="utf-8">
+<!-- InstanceBeginEditable name="doctitle" -->
+	<title>Giỏ hàng- Shop Mèo Anh-Đôn</title>
+	<script>
+	if (document.getElementById&&!document.layers){
+document.write('<input type="button" id="control" value="Clock Off" onClick="this.blur();onoff()">');
+}
+
+if (document.getElementById&&!document.layers){
+
+//Clock colours
+dCol='#000000';//date colour.
+fCol='#2A00FF';//face colour.
+sCol='#2A00FF';//seconds colour.
+mCol='#2A00FF';//minutes colour.
+hCol='#2A00FF';//hours colour.
+
+//Controls
+del=0.6;  //Follow mouse speed.
+ref=40;   //Run speed (timeout).
+
+//Alter nothing below! Alignments will be lost!
+var ieType=(typeof window.innerWidth != 'number');
+var docComp=(document.compatMode);
+var docMod=(docComp && docComp.indexOf("CSS") != -1);
+var ieRef=(ieType && docMod)
+?document.documentElement:document.body;
+theDays=new Array("SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY");
+theMonths=new Array("JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER");
+date=new Date();
+day=date.getDate();
+year=date.getYear();
+if (year < 2000) year=year+1900; 
+tmpdate=" "+theDays[date.getDay()]+" "+day+" "+theMonths[date.getMonth()]+" "+year;
+D=tmpdate.split("");
+N='3 4 5 6 7 8 9 10 11 12 1 2';
+N=N.split(" ");
+F=N.length;
+H='...';
+H=H.split("");
+M='....';
+M=M.split("");
+S='.....';
+S=S.split("");
+siz=40;
+eqf=360/F;
+eqd=360/D.length;
+han=siz/5.5;
+ofy=-7;
+ofx=-3;
+ofst=70;
+tmr=null;
+vis=true;
+mouseY=0;
+mouseX=0;
+dy=new Array();
+dx=new Array();
+zy=new Array();
+zx=new Array();
+tmps=new Array();
+tmpm=new Array(); 
+tmph=new Array();
+tmpf=new Array(); 
+tmpd=new Array();
+var sum=parseInt(D.length+F+H.length+M.length+S.length)+1;
+for (i=0; i < sum; i++){
+dy[i]=0;
+dx[i]=0;
+zy[i]=0;
+zx[i]=0;
+}
+
+algn=new Array();
+for (i=0; i < D.length; i++){
+algn[i]=(parseInt(D[i]) || D[i]==0)?10:9;
+document.write('<div id="_date'+i+'" class="css2" style="font-size:'+algn[i]+'px;color:'+dCol+'">'+D[i]+'<\/div>');
+tmpd[i]=document.getElementById("_date"+i).style;
+}
+for (i=0; i < F; i++){
+document.write('<div id="_face'+i+'" class="css2" style="color:'+fCol+'">'+N[i]+'<\/div>');
+tmpf[i]=document.getElementById("_face"+i).style; 
+}
+for (i=0; i < H.length; i++){
+document.write('<div id="_hours'+i+'" class="css1" style="color:'+hCol+'">'+H[i]+'<\/div>');
+tmph[i]=document.getElementById("_hours"+i).style;
+}
+for (i=0; i < M.length; i++){
+document.write('<div id="_minutes'+i+'" class="css1" style="color:'+mCol+'">'+M[i]+'<\/div>');
+tmpm[i]=document.getElementById("_minutes"+i).style; 
+}
+for (i=0; i < S.length; i++){
+document.write('<div id="_seconds'+i+'" class="css1" style="color:'+sCol+'">'+S[i]+'<\/div>');
+tmps[i]=document.getElementById("_seconds"+i).style;         
+}
+
+function onoff(){
+if (vis){ 
+ vis=false;
+ document.getElementById("control").value="Clock On";
+ }
+else{ 
+ vis=true;
+ document.getElementById("control").value="Clock Off";
+ Delay();
+ }
+kill();
+}
+
+function kill(){
+if (vis) 
+ document.onmousemove=mouse;
+else 
+ document.onmousemove=null;
+} 
+
+function mouse(e){
+var msy = (!ieType)?window.pageYOffset:0;
+if (!e) e = window.event;    
+ if (typeof e.pageY == 'number'){
+  mouseY = e.pageY + ofst - msy;
+  mouseX = e.pageX + ofst;
+ }
+ else{
+  mouseY = e.clientY + ofst - msy;
+  mouseX = e.clientX + ofst;
+ }
+if (!vis) kill();
+}
+document.onmousemove=mouse;
+
+function winDims(){
+winH=(ieType)?ieRef.clientHeight:window.innerHeight; 
+winW=(ieType)?ieRef.clientWidth:window.innerWidth;
+}
+winDims();
+window.onresize=new Function("winDims()");
+
+function ClockAndAssign(){
+time = new Date();
+secs = time.getSeconds();
+sec = Math.PI * (secs-15) / 30;
+mins = time.getMinutes();
+min = Math.PI * (mins-15) / 30;
+hrs = time.getHours();
+hr = Math.PI * (hrs-3) / 6 + Math.PI * parseInt(time.getMinutes()) / 360;
+
+for (i=0; i < S.length; i++){
+ tmps[i].top=dy[D.length+F+H.length+M.length+i]+ofy+(i*han)*Math.sin(sec)+scrollY+"px";
+ tmps[i].left=dx[D.length+F+H.length+M.length+i]+ofx+(i*han)*Math.cos(sec)+"px";
+ }
+for (i=0; i < M.length; i++){
+ tmpm[i].top=dy[D.length+F+H.length+i]+ofy+(i*han)*Math.sin(min)+scrollY+"px";
+ tmpm[i].left=dx[D.length+F+H.length+i]+ofx+(i*han)*Math.cos(min)+"px";
+ }
+for (i=0; i < H.length; i++){
+ tmph[i].top=dy[D.length+F+i]+ofy+(i*han)*Math.sin(hr)+scrollY+"px";
+ tmph[i].left=dx[D.length+F+i]+ofx+(i*han)*Math.cos(hr)+"px";
+ }
+for (i=0; i < F; i++){
+ tmpf[i].top=dy[D.length+i]+siz*Math.sin(i*eqf*Math.PI/180)+scrollY+"px";
+ tmpf[i].left=dx[D.length+i]+siz*Math.cos(i*eqf*Math.PI/180)+"px";
+ }
+for (i=0; i < D.length; i++){
+ tmpd[i].top=dy[i]+siz*1.5*Math.sin(-sec+i*eqd*Math.PI/180)+scrollY+"px";
+ tmpd[i].left=dx[i]+siz*1.5*Math.cos(-sec+i*eqd*Math.PI/180)+"px";
+ }
+if (!vis)clearTimeout(tmr);
+}
+
+buffW=(ieType)?80:90;
+function Delay(){
+scrollY=(ieType)?ieRef.scrollTop:window.pageYOffset;
+if (!vis){
+ dy[0]=-100;
+ dx[0]=-100;
+}
+else{
+ zy[0]=Math.round(dy[0]+=((mouseY)-dy[0])*del);
+ zx[0]=Math.round(dx[0]+=((mouseX)-dx[0])*del);
+}
+for (i=1; i < sum; i++){
+ if (!vis){
+  dy[i]=-100;
+  dx[i]=-100;
+ }
+ else{
+  zy[i]=Math.round(dy[i]+=(zy[i-1]-dy[i])*del);
+  zx[i]=Math.round(dx[i]+=(zx[i-1]-dx[i])*del);
+ }
+if (dy[i-1] >= winH-80) dy[i-1]=winH-80;
+if (dx[i-1] >= winW-buffW) dx[i-1]=winW-buffW;
+}
+
+tmr=setTimeout('Delay()',ref);
+ClockAndAssign();
+}
+window.onload=Delay;
+}
+//-->
+</script>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+	<a href="#Dautrang" title="Quay lại đầu trang"><img src="mui ten.png" style="width: 30px;margin-left: 1200px;margin-top: 500px;position:fixed"></a>
+	<div id="Dautrang"></div>
+	<div id="main">
+		<div id="head-left">
+		</div>
+		<div id="head-right"></div>
+		<div id="head-link">
+			<div id="menu">
+			<a href="1.%20Trang%20chủ.html" title="Trang chủ">Trang chủ</a>
+			<a href="2.%20Sản%20phẩm.html" title="Sản phẩm">Sản phẩm</a>
+			<a href="3.%20Đăng%20ký.html" title="Đăng ký">Đăng ký</a>
+			<a href="4.%20Đăng%20nhập.html" title="Đăng nhập">Đăng nhập</a>
+			<a href="5.%20Giỏ%20hàng.html" title="Giỏ hàng">Giỏ hàng</a>
+			<a href="6.%20Giới%20thiệu.html" title="Giới thiệu">Giới thiệu</a>
+			<form action="2.%20Sản%20phẩm.html">
+				<input type="search" placeholder ="Tìm kiếm"></input>
+				<input type="submit" value="Tìm kiếm" style="margin-left: 10px"></input>
+			</form>
+
+			</div>
+		</div>
+		<div id="left">
+			<br><h3 id="chu"><b>DANH SÁCH CÁC LOẠI MÈO TẠI SHOP</b></h3>
+			<ul type="square">
+				<div id="ds">
+				<li id="list"><a href="#Meobatu">Mèo Ba Tư</a></li>
+				<li id="list"><a href="#Meoaicap">Mèo Ai Cập</a></li>
+				<li id="list"><a href="#Meoanhlongdai">Mèo Anh lông dài</a></li>
+				<li id="list"><a href="#Meomuop">Mèo mướp</a></li>
+				<li id="list"><a href="#Meovang">Mèo vàng</a></li>
+				<li id="list"><a href="#Meoxiem">Mèo Xiêm</a></li>
+				<li id="list"><a href="#Meochanngan">Mèo chân ngắn Munchkin</a></li>
+				</div>
+			</ul>
+			<div id="calendar">
+			<script>
+				<!-- Begin
+				  monthnames = new Array("January", "Februrary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemeber");
+				  var linkcount = 0;
+				  function addlink(month, day, href) {
+					var entry = new Array(3);
+					entry[0] = month;
+					entry[1] = day;
+					entry[2] = href;
+					this[linkcount++] = entry;
+				  }
+				  Array.prototype.addlink = addlink;
+				  linkdays = new Array();
+				  monthdays = new Array(12);
+				  monthdays[0] = 31;
+				  monthdays[1] = 28;
+				  monthdays[2] = 31;
+				  monthdays[3] = 30;
+				  monthdays[4] = 31;
+				  monthdays[5] = 30;
+				  monthdays[6] = 31;
+				  monthdays[7] = 31;
+				  monthdays[8] = 30;
+				  monthdays[9] = 31;
+				  monthdays[10] = 30;
+				  monthdays[11] = 31;
+				  todayDate = new Date();
+				  thisday = todayDate.getDay();
+				  thismonth = todayDate.getMonth();
+				  thisdate = todayDate.getDate();
+				  thisyear = todayDate.getYear();
+				  thisyear = thisyear % 100;
+				  thisyear = ((thisyear < 50) ? (2000 + thisyear) : (1900 + thisyear));
+				  if (((thisyear % 4 == 0)
+				  && !(thisyear % 100 == 0))
+				  || (thisyear % 400 == 0)) monthdays[1]++;
+				  startspaces = thisdate;
+				  while (startspaces > 7) startspaces -= 7;
+				  startspaces = thisday - startspaces + 1;
+				  if (startspaces < 0) startspaces += 7;
+				  document.write("<table border=2 bgcolor=FF97D0 ");
+				  document.write("bordercolor=black><font color=white>");
+				  document.write("<tr><td colspan=7><center><strong>" + monthnames[thismonth] + " " + thisyear + "</strong></center></font></td></tr>");
+				  document.write("<tr>");
+				  document.write("<td align=center><font color=white>Su</td>");
+				  document.write("<td align=center><font color=white>M</td>");
+				  document.write("<td align=center><font color=white>Tu</td>");
+				  document.write("<td align=center><font color=white>W</td>");
+				  document.write("<td align=center><font color=white>Th</td>");
+				  document.write("<td align=center><font color=white>F</td>");
+				  document.write("<td align=center><font color=white>Sa</td>");
+				  document.write("</tr>");
+				  document.write("<tr>");
+				  for (s = 0; s < startspaces; s++) {
+					document.write("<td> </td>");
+				  }
+				  count = 1;
+				  while (count <= monthdays[thismonth]) {
+					for (b = startspaces; b < 7; b++) {
+					  linktrue = false;
+					  document.write("<td>");
+					  for (c = 0; c < linkdays.length; c++) {
+						if (linkdays[c] != null) {
+						  if ((linkdays[c][0] == thismonth + 1) && (linkdays[c][1] == count)) {
+							document.write("<a href=\"" + linkdays[c][2] + "\">");
+							linktrue = true;
+						  }
+						}
+					  }
+					  if (count == thisdate) {
+						document.write("<font color='00FFF5'><strong>");
+					  }
+					  if (count <= monthdays[thismonth]) {
+						document.write(count);
+					  }
+					  else {
+						document.write(" ");
+					  }
+					  if (count == thisdate) {
+						document.write("</strong></font>");
+					  }
+					  if (linktrue)
+						document.write("</a>");
+					  document.write("</td>");
+					  count++;
+					}
+					document.write("</tr>");
+					document.write("<tr>");
+					startspaces = 0;
+				  }
+				  document.write("</table></p>");
+				  // End -->
+  			</script>
+				<div id = "clock" style="color: #FF00F0;text-align: center;border: solid #B959C2;border-style: double" onload="currentTime()">
+			<script>function currentTime() {
+				  let date = new Date(); 
+				  let hh = date.getHours();
+				  let mm = date.getMinutes();
+				  let ss = date.getSeconds();
+				  let session = "AM";
+
+				  if(hh === 0){
+					  hh = 12;
+				  }
+				  if(hh > 12){
+					  hh = hh - 12;
+					  session = "PM";
+				   }
+
+				   hh = (hh < 10) ? "0" + hh : hh;
+				   mm = (mm < 10) ? "0" + mm : mm;
+				   ss = (ss < 10) ? "0" + ss : ss;
+
+				   let time = hh + ":" + mm + ":" + ss + " " + session;
+
+				  document.getElementById("clock").innerText = time; 
+				  let t = setTimeout(function(){ currentTime() }, 1000);
+				}
+
+				currentTime();
+				</script>
+					</div>
+			</div>
+		</div>
+		<!-- InstanceBeginEditable name="EditRegion3" -->
+		<div id="content"><img src="gio hang.jpg" width="300px" style="margin-left: 150px;margin-top: 90px">
+			<br><h3 align="center" style="color: #4F4F4F"><i>Vì lý do dịch bệnh Covid, hiện tại shop đã hết hàng<br>Xin quý khách quay lại vào ngày 25-5-2022</i></h3>
+			<a id="" href="2. Sản phẩm.html"><img src="mua ngay.png" style="margin-left: 200px"></a>
+		</div>
+		<!-- InstanceEndEditable -->
+		<div id="right"></div>
+		<div id="footer">
+			<div id="menu2">
+			<a href="1.%20Trang%20chủ.html" title="Trang chủ">Trang chủ</a>
+			<a href="2.%20Sản%20phẩm.html" title="Sản phẩm">Sản phẩm</a>
+			<a href="3.%20Đăng%20ký.html" title="Đăng ký">Đăng ký</a>
+			<a href="4.%20Đăng%20nhập.html" title="Đăng nhập">Đăng nhập</a>
+			<a href="5.%20Giỏ%20hàng.html" title="Giỏ hàng">Giỏ hàng</a>
+			<a href="6.%20Giới%20thiệu.html" title="Giới thiệu">Giới thiệu</a>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- InstanceEnd --></html>

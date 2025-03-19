@@ -1,0 +1,213 @@
+@charset "utf-8";
+/* CSS Document */
+/*chinh*/
+body {
+font-family: Arial, Tahoma;
+font-size: 12px;
+scroll-behavior: smooth;
+}
+#main {
+width: 1000px;
+padding: 0;
+margin-left: auto;
+margin-right: auto;
+border: dotted red;
+background-image: url("meo.jpg");
+}
+#head-left {
+height: 100px;
+border: 1px solid #CDCDCD;
+margin-bottom:5px;
+float: left;
+width: 150px;
+margin-right: 5px;
+background-image: url("Logo1.png");
+}
+#head-right{
+height: 100px;
+background-color: #F5F5F5;
+border: 1px solid #CDCDCD;
+margin-bottom:5px;
+width: 840px;
+float: left;
+background-image: url("headlink.jpg");
+}
+#head-link {
+height: 30px;
+line-height: 30px;
+border: 1px solid #CDCDCD;
+background-color: #F5F5F5;
+margin-bottom:5px;
+clear: both;
+}
+#left {
+width: 150px;
+min-height: 400px;
+border: 1px solid #CDCDCD;
+float:left;
+margin-bottom: 5px;
+background-image: url("nen.png");
+}
+#content {
+width: 600px;
+min-height: 400px;
+border: 1px solid #CDCDCD;
+float:left;
+margin-left: 5px;
+margin-right: 5px;
+margin-bottom: 5px;
+background-image: url("Logo2.png");
+min-height: 547px;
+}
+#right {
+background-image: url("meo2.jpg");
+width: 234px;
+min-height: 400px;
+border: 1px solid #CDCDCD;
+float:right;
+margin-bottom: 5px;
+}
+#footer {
+height: 30px;
+clear: both;
+border: 1px solid #CDCDCD;
+background-color: #F8F8FF;
+border-top: dotted red;
+}
+#menu{
+	width: 1000px;
+	height: 31px;
+	background-color: black;
+}
+#menu a{
+	display: block;
+	height: 31px;
+	width: 120px;
+	float: left;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+#menu a:hover{
+	background-color: #00F;
+	color: #FFF;
+	font-weight: bold;
+}
+#menu2{
+	width: 1000px;
+	height: 31px;
+	background-color: black;
+}
+#menu2 a{
+	display: block;
+	height: 24px;
+	width: 120px;
+	float: right;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	padding-top: 7px;
+}
+#menu2 a:hover{
+	background-color: #00F;
+	color: #FFF;
+	font-weight: bold;
+}
+/*phu*/
+#chu{
+	text-align: center;
+	color: #0A00FF;
+}
+#meo{
+	text-align: center;
+	border-style: double;
+	margin-left: 10px;
+	padding: 10px;
+	background-color: #000000;
+	color: white;
+}
+#meo1{
+	text-align: center;
+	border-style: double;
+	margin-left: 28px;
+	padding: 10px;
+	background-color: #000000;
+	color: white;
+	width: 130px;
+}
+#fullmeo{
+	float: left;
+	margin: 5px;
+}
+#nhom{
+	float: left;
+}
+#ds a{
+	display: block;
+	height: 24px;
+	width: 120px;;
+	text-decoration: none;
+	padding-top: 7px;
+}
+#li{
+	color:#0064FF;
+}
+#sp
+{
+	border: solid aqua;
+	width: 150px;
+	height: 200px;
+	float: left;
+	margin: 10px;
+	margin-left: 28px;
+}
+#list a {
+	text-decoration: none;
+	color: black;
+}
+#list a:hover {
+	text-decoration: none;
+	color: red;
+}
+#calendar{
+	margin-top: 100px;
+	margin-left: 2px;
+}
+legend{
+	color: black;
+	background-color:#FFFFFF;
+	border: double;
+	width: 200px;
+	text-align: center;
+}
+#span {
+	color: red;
+}
+#dangky{
+	margin-top: 80px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+#dangnhap{
+	margin-top: 170px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+#dangky2{
+	color: black;
+}
+.css1{
+position:absolute;bottom:0px;left:0px;
+width:16px;height:16px;
+font-family:Arial,sans-serif;
+font-size:16px;
+text-align:center;
+font-weight:bold;
+}
+.css2{
+position:absolute;bottom:0px;left:0px;
+width:10px;height:10px;
+font-family:Arial,sans-serif;
+font-size:10px;
+text-align:center;
+}	
